@@ -1,0 +1,28 @@
+{
+  "name": "angular-shop",
+  "version": "1.0.0",
+  "description": "Fullstack app with Angular and Node-express",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "server": "nodemon index.js"
+  },
+  "keywords": [
+    "Angular",
+    "Node.js express"
+  ],
+  "author": "Jevgeni",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jevgeni-i-am/angular-express-shop.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Jevgeni-i-am/angular-express-shop/issues"
+  },
+  "homepage": "https://github.com/Jevgeni-i-am/angular-express-shop#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.6"
+  }
+}
