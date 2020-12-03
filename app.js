@@ -24,6 +24,7 @@ require('./middlewear/passport')(passport)
 
 // Логирование запросов с помощю  MORGAN
 app.use(require('morgan')('dev'))
+app.use('/uploads', express.static('uploads'))
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 //обработка CORS запросов с других серверов
