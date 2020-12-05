@@ -20,7 +20,7 @@ module.exports.login = async function (req, res) {
 				userId: candidate._id
 			}, keys.jwt, {expiresIn: 60 * 60})
 			res.status(200).json({
-				token:`Bearer ${token}`
+				token: `Bearer ${token}`
 			})
 		} else {
 			//ответ клиенту, пароли не совпали
@@ -39,6 +39,8 @@ module.exports.login = async function (req, res) {
 
 
 }
+
+
 //localhost:5000/api/auth/register
 module.exports.register = async function (req, res) {
 //email, password
@@ -59,15 +61,17 @@ module.exports.register = async function (req, res) {
 			email: req.body.email,
 			password: bcrypt.hashSync(password, salt)
 		})
-	}
-	try {
-		await user.save()
-		res.status(209).json(user)
-	} catch (e) {
-		//Обработать ошибку
-		errorHandler(res,e)
+
+
+		try {
+			await user.save()
+			res.status(201).json(user)
+		} catch (e) {
+			//Обработать ошибку
+			errorHandler(res, e)
+
+		}
 
 	}
-
 }
 
