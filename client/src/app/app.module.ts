@@ -20,6 +20,7 @@ import {PositionsFormComponent} from './categories-page/categories-form/position
 import {CommonModule} from "@angular/common";
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +51,8 @@ import {CommonModule} from "@angular/common";
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    CommonModule
+    CommonModule,
+    FormsModule
 
   ],
   providers: [

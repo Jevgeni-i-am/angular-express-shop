@@ -10,6 +10,10 @@ const positionRoutes = require('./routes/position')
 const keys = require('./config/keys')
 const app = express()
 
+// Make Mongoose use `findOneAndUpdate()`. Note that this option is `true`
+// by default, you need to set it to false.
+mongoose.set('useFindAndModify', false);
+
 mongoose.connect(keys.mongoURI, {
 		useNewUrlParser: true,
 		useUnifiedTopology: true,
@@ -17,6 +21,10 @@ mongoose.connect(keys.mongoURI, {
 	})
 	.then(() => console.log('MongoDB connected'))
 	.catch(error => console.log(error))
+
+mongoose.createConnection(keys.mongoURI, {
+	useUnifiedTopology: true
+});
 
 app.use(passport.initialize())
 require('./middlewear/passport')(passport)
@@ -27,7 +35,7 @@ app.use(require('morgan')('dev'))
 app.use('/uploads', express.static('uploads'))
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
-//обработка CORS запросов с других серверов
+//обработка CORS запросов  других серверов
 app.use(require('cors')())
 
 

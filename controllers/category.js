@@ -4,8 +4,9 @@ const errorHandler = require('../utils/errorHandler')
 
 
 module.exports.getAll = async function (req, res) {
+	console.log('GET ALL CATEGORIES')
 	try {
-		const categories = await category.find({user: req.user.id})
+		const categories = await Category.find({user: req.user.id})
 		res.status(200).json(categories)
 	} catch (e) {
 		errorHandler(res, e)
@@ -14,7 +15,8 @@ module.exports.getAll = async function (req, res) {
 
 module.exports.getById = async function (req, res) {
 	try {
-		const category = await category.findById(req.params.id)
+		console.log('GET CATEGORY BY ID')
+		const category = await Category.findById(req.params.id)
 		res.status(200).json(category)
 	} catch (e) {
 		errorHandler(res, e)
@@ -23,8 +25,9 @@ module.exports.getById = async function (req, res) {
 
 module.exports.remove = async function (req, res) {
 	try {
+		console.log('REMOVE CATEGORY')
 		await Category.remove({_id: req.params.id})
-		await Positionremove({category: req.params.id})
+		await Position.remove({category: req.params.id})
 		res.status(200).json({
 			message: 'Категория удалена'
 		})
@@ -34,21 +37,23 @@ module.exports.remove = async function (req, res) {
 }
 
 module.exports.create = async function (req, res) {
+	console.log('CREATE CATEGORY')
 	const category = new Category({
 		name: req.body.name,
-		user: reg.body.id,
+		user: req.user.id,
 		imageSrc: req.file ? req.file.path : ''
 	})
 
 	try {
 		await category.save()
-		res.status(201).json(category, {message: 'Picture uploaded'})
+		res.status(201).json(category)
 	} catch (e) {
 		errorHandler(res, e)
 	}
 }
 
 module.exports.update = async function (req, res) {
+	console.log('UPDATE CATEGORY')
 	const updated = {
 		name: req.body.name
 	}
@@ -59,7 +64,8 @@ module.exports.update = async function (req, res) {
 		const category = await Category.findOneAndUpdate(
 			{_id: req.params.id},
 			{$set: updated},
-			{new: true}
+			{new: true},
+
 		)
 		res.status(200).json(category)
 	} catch (e) {

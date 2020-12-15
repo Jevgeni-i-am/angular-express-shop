@@ -1,6 +1,9 @@
 const multer = require('multer')
 const moment = require('moment')
 
+
+//Конфигурируем местоположение файлов
+//Надо создать папку uploads и пустой файл .gitkeep во избежание ошибок
 const storage = multer.diskStorage({
 	destination(req, file, cb) {
 		cb(null, 'uploads/')
@@ -10,15 +13,18 @@ const storage = multer.diskStorage({
 		cb(null, `${date}-${file.originalname}`)
 	}
 })
+
+//функция для фильтрации файлов при загрузке
 const fileFilter = (req, file, cb) => {
-	if (file.mimetype === 'image/png' || file.mimetype === 'image/jpeg') {
+	if (
+		file.mimetype === 'image/png' || file.mimetype === 'image/jpeg') {
 		cb(null, true)
-	}else{
+	} else {
 		cb(null, false)
 	}
 }
 
-const limits ={
-	fileSize:1024*1024*5
-}
-module.exports = multer({storage,	fileFilter,	limits})
+// Лимит загружаемого файла.
+const limits = {fileSize: 1024 * 1024 * 5}
+
+module.exports = multer({storage, fileFilter, limits})

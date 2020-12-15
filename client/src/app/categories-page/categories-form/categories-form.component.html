@@ -1,18 +1,25 @@
 <div class="page-title">
   <h4>
-    <a routerLink="/categories">
-      Категории
-    </a>
+    <a routerLink="/categories">Категории</a>
+
     <i class="material-icons">keyboard_arrow_right</i>
     {{isNew ? 'Добавить' : 'Редактировать'}} категорию
   </h4>
+
+
+  <!-- Кнопка удаления категории-->
   <span>
-            <button class="btn btn-small red">
+            <button
+              *ngIf="!isNew"
+              class="btn btn-small red"
+              (click)="deleteCategory()">
               <i class="material-icons">delete</i>
             </button>
-          </span>
+  </span>
+
 </div>
 
+<!--Проверка правильности заполнения формы [ngClass]-->
 <div class="row">
   <form class="col s12 l6" [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="input-field">
@@ -20,7 +27,7 @@
         formControlName="name"
         id="name"
         type="text"
-        [ngClass]="{'invalid':form.get('name').invalid&&form.get('name').touched}"
+        [ngClass]="{'invalid':form.get('name').invalid && form.get('name').touched}"
       >
       <label for="name">Название</label>
       <span
@@ -35,14 +42,14 @@
     </div>
 
     <div>
-      <input type="file" class="dn" #input (change)="onFileUpload($event)" >
+      <input type="file" class="dn" #input (change)="onFileUpload($event)">
       <button
         (click)="triggerClick()"
         [disabled]="form.disabled"
         type="button"
         class="waves-effect waves-light btn orange lighten-2 mb2">
         <i class="material-icons left">backup</i>
-        Загрузить изображение
+        {{isNew ? 'Загрузить' : 'Обновить'}} изображение
       </button>
     </div>
 
@@ -51,7 +58,7 @@
         type="submit"
         [disabled]="form.invalid || form.disabled "
         class="waves-effect waves-light btn">
-        Сохранить изменения
+        {{isNew ? 'Сохранить категорию' : 'Редактировать изменения'}}
       </button>
     </div>
   </form>
@@ -67,9 +74,13 @@
 </div>
 
 
-<!--
-<app-positions-form></app-positions-form>
--->
+<app-positions-form
+  *ngIf="category?._id"
+  [categoryId]="category._id"
+>
+
+</app-positions-form>
+
 
 
 
