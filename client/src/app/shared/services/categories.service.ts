@@ -12,7 +12,7 @@ export class CategoriesService {
 
   //получает список всех категорий
   fetch(): Observable<Category[]> {
-    return this.http.get<Category[]>(`/api/category`)
+    return this.http.get<Category[]>('/api/category')
   }
 
   getById(id: string): Observable<Category> {
@@ -20,24 +20,27 @@ export class CategoriesService {
   }
 
   //Отправка файла на сервер
-    create(name: string, image?: File): Observable<Category> {
+  create(name: string, image?: File): Observable<Category> {
     const fd = new FormData()
     if (image) {
       //Имя Image взято с create запроса бэкэнда
       fd.append('image', image, image.name)
     }
     fd.append('name', name)
-    return this.http.post<Category>(`/api/category`, fd)
+
+    return this.http.post<Category>('/api/category', fd)
   }
 
   //Обновление файла на сервере
-  update(id: string, name: string, image?: File ): Observable<Category> {
+  update(id: string, name: string, image?: File): Observable<Category> {
     const fd = new FormData()
+
     if (image) {
       //Имя Image взято с create запроса бэкэнда
-      fd.append('image', image.name)
+      fd.append('image', image, image.name)
     }
     fd.append('name', name)
+
     return this.http.patch<Category>(`/api/category/${id}`, fd)
   }
 

@@ -4,10 +4,10 @@ const errorHandler = require('../utils/errorHandler')
 
 
 module.exports.getAll = async function (req, res) {
-	console.log('GET ALL CATEGORIES')
 	try {
 		const categories = await Category.find({user: req.user.id})
 		res.status(200).json(categories)
+		console.log('GET ALL CATEGORIES')
 	} catch (e) {
 		errorHandler(res, e)
 	}
@@ -15,9 +15,9 @@ module.exports.getAll = async function (req, res) {
 
 module.exports.getById = async function (req, res) {
 	try {
-		console.log('GET CATEGORY BY ID')
 		const category = await Category.findById(req.params.id)
 		res.status(200).json(category)
+		console.log('GET CATEGORY BY ID')
 	} catch (e) {
 		errorHandler(res, e)
 	}
@@ -25,19 +25,17 @@ module.exports.getById = async function (req, res) {
 
 module.exports.remove = async function (req, res) {
 	try {
-		console.log('REMOVE CATEGORY')
+
 		await Category.remove({_id: req.params.id})
 		await Position.remove({category: req.params.id})
-		res.status(200).json({
-			message: 'Категория удалена'
-		})
+		res.status(200).json({message: 'Категория удалена'})
+		console.log('REMOVE CATEGORY')
 	} catch (e) {
 		errorHandler(res, e)
 	}
 }
 
 module.exports.create = async function (req, res) {
-	console.log('CREATE CATEGORY')
 	const category = new Category({
 		name: req.body.name,
 		user: req.user.id,
@@ -47,29 +45,39 @@ module.exports.create = async function (req, res) {
 	try {
 		await category.save()
 		res.status(201).json(category)
+		console.log('CREATE CATEGORY')
 	} catch (e) {
 		errorHandler(res, e)
 	}
 }
 
-module.exports.update = async function (req, res) {
-	console.log('UPDATE CATEGORY')
+module.exports.update = async function(req, res) {
 	const updated = {
 		name: req.body.name
 	}
+
 	if (req.file) {
-		updated.imageScr = req.file.path
+		updated.imageSrc = req.file.path
 	}
+
 	try {
 		const category = await Category.findOneAndUpdate(
 			{_id: req.params.id},
 			{$set: updated},
-			{new: true},
-
+			{new: true}
 		)
 		res.status(200).json(category)
+		console.log('CATEGORY WAS UPDATED')
 	} catch (e) {
 		errorHandler(res, e)
 	}
 }
+
+
+
+
+
+
+
+
 

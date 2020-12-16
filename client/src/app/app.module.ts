@@ -18,6 +18,8 @@ import {LoaderComponent} from './shared/components/loader/loader.component';
 import {CategoriesFormComponent} from './categories-page/categories-form/categories-form.component';
 import {PositionsFormComponent} from './categories-page/categories-form/positions-form/positions-form.component'
 import {CommonModule} from "@angular/common";
+import {OrderCategoriesComponent} from './order-page/order-categories/order-categories.component';
+import {OrderPositionsComponent} from './order-page/order-positions/order-positions.component';
 
 
 
@@ -36,6 +38,8 @@ import {CommonModule} from "@angular/common";
     LoaderComponent,
     CategoriesFormComponent,
     PositionsFormComponent,
+    OrderCategoriesComponent,
+    OrderPositionsComponent,
 
 
   ],
@@ -64,5 +68,7 @@ import {CommonModule} from "@angular/common";
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {
+
+export class AppModule{
+
 }

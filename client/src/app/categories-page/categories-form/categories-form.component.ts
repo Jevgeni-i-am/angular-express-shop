@@ -1,5 +1,5 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute, Params, Router} from "@angular/router";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {CategoriesService} from "../../shared/services/categories.service";
 import {switchMap} from "rxjs/operators";
@@ -36,7 +36,7 @@ export class CategoriesFormComponent implements OnInit {
     this.route.params
       .pipe(
         switchMap(
-          (params) => {
+          (params: Params) => {
             if (params['id']) {
               this.isNew = false
               return this.categoriesService.getById(params['id'])
@@ -117,14 +117,12 @@ export class CategoriesFormComponent implements OnInit {
         this.category = category
         MaterialService.toast('Изменения сохранены')
         this.form.enable()
+        this.router.navigate([`/categories/`],{relativeTo: this.route})
       },
       error => {
         MaterialService.toast(error.error.message)
         this.form.enable()
-
       }
-    ),
-      this.router.navigate([`/categories/`])
-
+    )
   }
 }
