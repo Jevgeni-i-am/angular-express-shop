@@ -20,6 +20,8 @@ import {PositionsFormComponent} from './categories-page/categories-form/position
 import {CommonModule} from "@angular/common";
 import {OrderCategoriesComponent} from './order-page/order-categories/order-categories.component';
 import {OrderPositionsComponent} from './order-page/order-positions/order-positions.component';
+import { HistoryListComponent } from './history-page/history-list/history-list.component';
+import { HistoryFilterComponent } from './history-page/history-filter/history-filter.component';
 
 
 
@@ -40,6 +42,8 @@ import {OrderPositionsComponent} from './order-page/order-positions/order-positi
     PositionsFormComponent,
     OrderCategoriesComponent,
     OrderPositionsComponent,
+    HistoryListComponent,
+    HistoryFilterComponent,
 
 
   ],
@@ -55,10 +59,9 @@ import {OrderPositionsComponent} from './order-page/order-positions/order-positi
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    CommonModule,
-    FormsModule
-
+    CommonModule
   ],
+
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

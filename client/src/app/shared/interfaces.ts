@@ -17,18 +17,17 @@ export interface Category {
 export interface Position {
   name: string
   cost: number
-  user?: string
   category: string
+  user?: string
   _id?: string
   quantity?: number
 }
-
 
 export interface Order {
   date?: Date
   order?: number
   user?: string
-  list: any[]
+  list: OrderPosition[]
   _id?: string
 }
 
@@ -39,3 +38,8 @@ export interface OrderPosition {
   _id?: string
 }
 
+export interface Filter {
+  start?: Date
+  end?: Date
+  order?: number
+}

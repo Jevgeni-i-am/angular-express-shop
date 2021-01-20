@@ -7,11 +7,14 @@
     <i class="material-icons">keyboard_arrow_right</i>
     Добавить продукцию
   </h4>
-  <button class="waves-effect btn grey darken-1" (click)="open()">
+  <button
+    class="waves-effect btn grey darken-1"
+    (click)="open()"
+    [disabled]="order.list.length===0"
+  >
     Завершить
   </button>
 </div>
-
 
 
 <!--CONTENT-->
@@ -52,10 +55,16 @@
   <div class="modal-footer">
     <button
       (click)="cancel()"
-      class="modal-action waves-effect waves-black btn-flat">Отмена</button>
+      [disabled]="pending"
+      class="modal-action waves-effect waves-black btn-flat">
+      Отмена
+    </button>
     <button
       (click)="submit()"
-      class="modal-action btn waves-effect">Подтвердить</button>
+      [disabled]="order.list.length===0 || pending"
+      class="modal-action btn waves-effect">
+      Подтвердить
+    </button>
   </div>
 </div>
 
