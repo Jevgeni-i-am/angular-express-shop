@@ -45,6 +45,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.1101.1",
+    "@angular/compiler-cli": "^11.1.0",
     "concurrently": "^5.3.0",
     "nodemon": "^2.0.6"
   }
