@@ -3,12 +3,17 @@
   "version": "1.0.0",
   "description": "Fullstack app with Angular and Node-express",
   "main": "index.js",
+  "engines": {
+    "node": "14.4.0",
+    "npm": "6.14.9"
+  },
   "scripts": {
     "start": "node index.js",
     "server": "nodemon index.js",
     "client-install": "npm i --prefix client",
     "client": "npm run start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm run client-install && npm run build --prefix client"
   },
   "keywords": [
     "Angular",

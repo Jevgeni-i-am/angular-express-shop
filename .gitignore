@@ -1,4 +1,5 @@
 node_modules
 /.idea
 /mongo pass
-config/keys.js
+config/keys.dev.js
+client/etc

@@ -1,6 +1,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const passport = require('passport')// PASSPORT JS - набор стратегий регистрации и т.д.
+const path = require('path')
 const bodyParser = require('body-parser') //Парсирование объектов .body
 const authRoutes = require('./routes/auth')
 const analyticsRoutes = require('./routes/analytics')
@@ -45,6 +46,17 @@ app.use('/api/category', categoryRoutes) //localhost:5000/api/auth/category
 app.use('/api/order', orderRoutes) //localhost:5000/api/auth/order
 app.use('/api/position', positionRoutes) //localhost:5000/api/auth/position
 
+//Подготовка к продакшен мод
+if(process.env.NODE_ENV==='production'){
+	app.use(express.static('client/dist/client'))
+	app.get('*',(req,res)=>{
+		res.sendFile(
+			path.resolve(
+			__dirname, 'client', 'dist', 'client', 'index.html'
+			)
+		)
+	})
+}
 
 module.exports = app
 
