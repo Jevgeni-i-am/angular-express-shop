@@ -43,3 +43,26 @@ export interface Filter {
   end?: Date
   order?: number
 }
+
+export interface OverviewPage {
+  orders: OverviewPageItem
+  gain:OverviewPageItem
+}
+
+export interface OverviewPageItem{
+  percent:number
+  compare:number
+  yesterday:number
+  isHigher:boolean
+}
+
+export interface AnalyticsPage{
+  average:number
+  chart: AnalyticsPageChart[]
+}
+
+export interface AnalyticsPageChart{
+  gain:number
+  order:number
+  label:string
+}

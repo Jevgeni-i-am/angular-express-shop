@@ -4,7 +4,9 @@ declare var M
 
 export interface MaterialInstance {
   open?(): void
+
   close?(): void
+
   destroy?(): void
 }
 
@@ -43,5 +45,9 @@ export class MaterialService {
       showClearBtn: true,
       onClose
     })
+  }
+
+  static initTapTarget(ref:ElementRef): MaterialInstance{
+    return M.TapTarget.init(ref.nativeElement)
   }
 }

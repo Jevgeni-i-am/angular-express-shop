@@ -5,8 +5,8 @@ const router = express.Router()
 
 
 //localhost:5000/api/auth/login
-router.get('/overview', controller.overview)
+router.get('/overview', passport.authenticate('jwt',{session:false}),controller.overview)
 //localhost:5000/api/auth/register
-router.get('/analytics', controller.analytics)
+router.get('/analytics', passport.authenticate('jwt',{session:false}),controller.analytics)
 
 module.exports = router

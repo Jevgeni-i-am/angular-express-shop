@@ -29,7 +29,7 @@ module.exports.getAll = async function (req, res) {
 
 	try {
 		const orders = await Order
-			.find(querry)
+			.find(query)
 			.sort({date: -1})
 			.skip(+req.query.offset)
 			.limit(+req.query.limit)
