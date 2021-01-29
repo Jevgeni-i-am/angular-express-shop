@@ -1,5 +1,5 @@
 {
-  "name": "angular-shop",
+  "name": "back-end_of_angular_shop",
   "version": "1.0.0",
   "description": "Fullstack app with Angular and Node-express",
   "main": "index.js",
@@ -26,10 +26,12 @@
     "url": "git+https://github.com/Jevgeni-i-am/angular-express-shop.git"
   },
   "bugs": {
-    "url": "https://github.com/Jevgeni-i-am/angular-express-shop/issues"
+    "url": "https://github.com/Jevgeni-i-am/angular-express-shop/issues",
+    "email": "dev.jedro1d@gmail.com"
   },
   "homepage": "https://github.com/Jevgeni-i-am/angular-express-shop",
   "dependencies": {
+    "@angular/compiler-cli": "~11.0.3",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
@@ -45,7 +47,6 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.1101.1",
-    "@angular/compiler-cli": "^11.1.0",
     "concurrently": "^5.3.0",
     "nodemon": "^2.0.6"
   }
