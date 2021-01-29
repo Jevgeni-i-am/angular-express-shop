@@ -31,6 +31,7 @@
   },
   "homepage": "https://github.com/Jevgeni-i-am/angular-express-shop",
   "dependencies": {
+    "@angular/cli": "^11.1.2",
     "@angular/compiler-cli": "~11.0.3",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
