@@ -1,5 +1,6 @@
 node_modules
 /.idea
+/.vscode
 /mongo pass
 config/keys.dev.js
 client/etc
