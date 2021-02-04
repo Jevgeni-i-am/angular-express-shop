@@ -1,0 +1,11 @@
+.info-block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 1em;
+}
+
+nav .nav-wraper {
+  position: relative;
+  height: 99%
+}

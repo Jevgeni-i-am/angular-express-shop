@@ -1,12 +1,12 @@
 <div class="row">
   <div class="col s12">
     <div class="page-subtitle">
-      <h4>Позиции:</h4>
+      <h4>Position:</h4>
       <button
         class="waves-effect waves-light btn grey darken-1 btn-small "
         (click)="onAddPosition()"
       >
-        Добавить позицию
+        Add position
       </button>
     </div>
 
@@ -22,7 +22,7 @@
           (click)="onSelectPosition(position)"
         >
           <span>
-           {{position.name}} <strong>{{position.cost}} руб.</strong>
+           {{position.name}} <strong>{{position.cost}} €.</strong>
           </span>
 
           <span>
@@ -32,7 +32,7 @@
         </a>
       </div>
       <ng-template #empty>
-        <div class="center">В категории позиций нет</div>
+        <div class="center">There are no positions in the category</div>
       </ng-template>
     </div>
     <ng-template #loader>
@@ -47,7 +47,7 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
   <div class="modal" #modal>
     <div class="modal-content">
-      <h4 class="mb1">Добавить позицию</h4>
+      <h4 class="mb1">Add position</h4>
 
      <!--Название-->
       <div class="input-field">
@@ -57,12 +57,12 @@
           type="text"
           [ngClass]="{'invalid':form.get('name').invalid && form.get('name').touched}"
         >
-        <label for="pos-name">Название</label>
+        <label for="pos-name">Title</label>
         <span
           *ngIf="form.get('name').invalid && form.get('name').touched"
           class="helper-text red-text"
         >
-          Название не должно быть пустым
+          Title must not be empty
         </span>
       </div>
 
@@ -75,12 +75,12 @@
           formControlName="cost"
           [ngClass]="{'invalid':form.get('cost').invalid && form.get('cost').touched}"
         >
-        <label for="pos-cost">Цена</label>
+        <label for="pos-cost">Price</label>
         <span
           *ngIf="form.get('cost').invalid && form.get('cost').touched"
           class="helper-text red-text"
         >
-          Введите коректную цену. Минимальное значение 1
+          Enter the correct price. Minimum value 1 €
         </span>
       </div>
     </div>
@@ -93,7 +93,7 @@
         type="button"
         [disabled]="form.disabled"
       >
-        Отмена
+        Cancel
       </button>
 
       <!--Сохранить-->
@@ -103,7 +103,7 @@
         type="submit"
         [disabled]="form.invalid || form.disabled"
       >
-        Сохранить
+        Save
       </button>
     </div>
   </div>

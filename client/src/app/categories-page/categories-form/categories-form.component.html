@@ -1,9 +1,9 @@
 <div class="page-title">
   <h4>
-    <a routerLink="/categories">Категории</a>
+    <a routerLink="/categories">Category</a>
 
     <i class="material-icons">keyboard_arrow_right</i>
-    {{isNew ? 'Добавить' : 'Редактировать'}} категорию
+    {{isNew ? 'Add' : 'Edit'}} category
   </h4>
 
 
@@ -29,14 +29,15 @@
         type="text"
         [ngClass]="{'invalid':form.get('name').invalid && form.get('name').touched}"
       >
-      <label for="name">Название</label>
+      <label for="name">Name</label>
       <span
         class="helper-text red-text"
         *ngIf="form.get('name').invalid && form.get('name').touched"
       >
             <span
               *ngIf="form.get('name').errors['required']">
-              Введите название категории
+
+Enter category name
             </span>
       </span>
     </div>
@@ -49,7 +50,7 @@
         type="button"
         class="waves-effect waves-light btn orange lighten-2 mb2">
         <i class="material-icons left">backup</i>
-        {{isNew ? 'Загрузить' : 'Обновить'}} изображение
+        {{isNew ? 'Download' : 'Refresh'}} picture
       </button>
     </div>
 
@@ -58,7 +59,7 @@
         type="submit"
         [disabled]="form.invalid || form.disabled "
         class="waves-effect waves-light btn">
-        {{isNew ? 'Сохранить категорию' : 'Редактировать изменения'}}
+        {{isNew ? 'Save category ':' Edit changes'}}
       </button>
     </div>
   </form>
