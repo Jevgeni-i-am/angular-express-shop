@@ -1,9 +1,9 @@
 <!--Page title-->
 <div class="page-title">
-  <h4 *ngIf="isRoot">Заказ</h4>
+  <h4 *ngIf="isRoot">Order</h4>
 
   <h4 *ngIf="!isRoot">
-    <a routerLink="/order">Заказ</a>
+    <a routerLink="/order">Order</a>
     <i class="material-icons">keyboard_arrow_right</i>
     Add production
   </h4>
@@ -12,7 +12,7 @@
     (click)="open()"
     [disabled]="order.list.length===0"
   >
-    Завершить
+    Complete
   </button>
 </div>
 
@@ -25,13 +25,14 @@
 <!--Modal window-->
 <div #modal class="modal modal-fixed-footer">
   <div class="modal-content">
-    <h4 class="mb1">Ваш заказ</h4>
+    <h4 class="mb1">
+      Your order</h4>
     <table class="highlight">
       <thead>
       <tr>
-        <th>Название</th>
-        <th>Количество</th>
-        <th>Цена</th>
+        <th>Title</th>
+        <th>Quantity</th>
+        <th>Price</th>
         <th></th>
       </tr>
       </thead>
@@ -41,7 +42,7 @@
       <tr *ngFor="let item of order.list">
         <td>{{item.name}}</td>
         <td>{{item.quantity}}</td>
-        <td>{{item.cost}} руб.</td>
+        <td>{{item.cost}} €.</td>
         <td><i class="material-icons pointer" (click)="removePosition(item)">delete</i></td>
       </tr>
 
@@ -49,7 +50,8 @@
 
     </table>
     <div class="order-summary">
-      <p>Общая стоимость <strong>{{order.price}} руб.</strong></p>
+      <p>
+        Total cost <strong>{{order.price}} €.</strong></p>
     </div>
   </div>
   <div class="modal-footer">
@@ -57,13 +59,13 @@
       (click)="cancel()"
       [disabled]="pending"
       class="modal-action waves-effect waves-black btn-flat">
-      Отмена
+      Cancel
     </button>
     <button
       (click)="submit()"
       [disabled]="order.list.length===0 || pending"
       class="modal-action btn waves-effect">
-      Подтвердить
+      Confirm
     </button>
   </div>
 </div>
