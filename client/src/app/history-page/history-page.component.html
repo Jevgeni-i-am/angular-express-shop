@@ -1,7 +1,7 @@
 <!--CONTENT-->
 
 <div class="page-title">
-  <h4>История заказов</h4>
+  <h4>Purchase history</h4>
   <button
     (click)="isFilterVisible = !isFilterVisible"
     class="btn btn-small"
@@ -36,7 +36,7 @@
         class="btn waves-effect grey darken-1 btn-small"
         (click)="loadMore()"
         *ngIf="!loading; else loader"
-      >Загрузить еще
+      >Load more
       </button>
       <ng-template #loader>
         <app-loader></app-loader>
@@ -44,7 +44,7 @@
     </div>
   </div>
   <ng-template #empty>
-    <div class="center">Заказов пока нет.</div>
+    <div class="center">No orders yet.</div>
   </ng-template>
 </div>
 

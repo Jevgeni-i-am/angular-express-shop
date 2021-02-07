@@ -2,9 +2,9 @@
   <thead>
   <tr>
     <th>№</th>
-    <th>Дата</th>
-    <th>Время</th>
-    <th>Сумма</th>
+    <th>Data</th>
+    <th>Time</th>
+    <th>Amount</th>
     <th></th>
   </tr>
   </thead>
@@ -30,13 +30,13 @@
 <!--MODAL-->
 <div id="order-list" class="modal modal-fixed-footer" #modal>
   <div class="modal-content" *ngIf="selectedOrder">
-    <h4 class="mb1">Заказ №{{selectedOrder.order}}</h4>
+    <h4 class="mb1">Order №{{selectedOrder.order}}</h4>
     <table class="highlight">
       <thead>
       <tr>
-        <th>Название</th>
-        <th>Количество</th>
-        <th>Цена</th>
+        <th>Title</th>
+        <th>Amount</th>
+        <th>Price</th>
       </tr>
       </thead>
 
@@ -49,14 +49,15 @@
       </tbody>
     </table>
     <div class="order-summary">
-      <p>Общая стоимость <strong>{{computePrice(selectedOrder)}}руб.</strong></p>
+      <p>Total cost <strong>{{computePrice(selectedOrder)}}€.</strong></p>
     </div>
   </div>
   <div class="modal-footer">
     <button
       class="modal-action waves-effect waves-black btn-flat"
-    (click)="closeModal()"
-    >Закрыть</button>
+      (click)="closeModal()"
+    >Close
+    </button>
   </div>
 </div>
 
