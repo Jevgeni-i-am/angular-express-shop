@@ -5,7 +5,7 @@
 >
 
   <div class="card-content">
-    <span class="card-title">Войти в систему</span>
+    <span class="card-title">Sign in</span>
 
     <div class="input-field">
       <input
@@ -19,8 +19,10 @@
         class="helper-text red-text"
         *ngIf="form.get('email').invalid && form.get('email').touched"
       >
-        <span *ngIf="form.get('email').errors['required']">Email не должен быть пустым</span>
-        <span *ngIf="form.get('email').errors['email']">Введите коректный адресс</span>
+        <span *ngIf="form.get('email').errors['required']">
+Email must not be empty</span>
+        <span *ngIf="form.get('email').errors['email']">
+Please enter the correct address</span>
       </span>
     </div>
 
@@ -31,20 +33,21 @@
         type="password"
         [ngClass]="{'invalid':form.get('password').invalid && form.get('password').touched}"
       >
-      <label for="password">Пароль:</label>
+      <label for="password">Password:</label>
       <span
         class="helper-text red-text"
         *ngIf="form.get('password').invalid && form.get('password').touched"
       >
         <span *ngIf="
         form.get('password').errors['required']">
-          Пароль не должен быть пустым
+Password must not be empty
         </span>
         <span *ngIf="
           form.get('password').errors['minlength'] &&
           form.get('password').errors['minlength']['requiredLength']">
-          Пароль должен быть больше {{form.get('password').errors['minlength']['requiredLength'] }} символов.
-          <br>Сейчас {{form.get('password').errors['minlength']['actualLength'] }} символов.
+
+Password must be greater {{form.get('password').errors['minlength']['requiredLength'] }} symbols.
+          <br>Now {{form.get('password').errors['minlength']['actualLength'] }} symbols.
         </span>
       </span>
     </div>
@@ -55,7 +58,7 @@
       type="submit"
       class="modal-action btn waves-effect"
       [disabled]="form.invalid||form.disabled">
-      Войти
+      Login
     </button>
   </div>
 

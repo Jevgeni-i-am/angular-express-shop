@@ -70,7 +70,7 @@ export class CategoriesFormComponent implements OnInit {
 
   //Удаление категории
   deleteCategory() {
-    const decision = window.confirm(`Вы уверены что хотите удалить категорию "${this.category.name}"?`)
+    const decision = window.confirm(`Are you sure you want to delete the "${this.category.name}"category?`)
     if (decision) {
       this.categoriesService.delete(this.category._id)
         .subscribe(
@@ -115,7 +115,7 @@ export class CategoriesFormComponent implements OnInit {
     obs$.subscribe(
       category => {
         this.category = category
-        MaterialService.toast('Изменения сохранены')
+        MaterialService.toast('Changes saved')
         this.form.enable()
         this.router.navigate([`/categories/`],{relativeTo: this.route})
       },
